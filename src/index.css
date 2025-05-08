@@ -1,10 +1,115 @@
+@property --gradient-button-fill {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+@property --gradient-button-border-1 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+@property --gradient-button-border-2 {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: transparent;
+}
+@property --bg-angle {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes rotate-border {
+  to {
+    --bg-angle: 360deg;
+  }
+}
+:root {
+  /* Border gradient colors */
+  --clr-1: #ffffff;
+  --clr-2: #f8f9fa;
+  --clr-3: #f1f3f5;
+  --clr-4: #eaf3f3;
+  --clr-5: #dcebe4;
+
+  /* Backgrounds */
+  --color-bg: #ffffff;
+  --color-surface: #f8f9fa;
+  --color-card: #f1f3f5;
+  --color-gradient: #dfe7ef, #afc2d5;
+  --color-gradient-button-fill: #f1f3f5;
+  --color-gradient-button-border-1: #dfe7ef;
+  --color-gradient-button-border-2: #afc2d5;
+
+  /* Text */
+  --color-text: #212529;
+  --color-text-muted: #6c757d;
+  --color-heading: #111;
+
+  /* Primary Colors */
+  --color-primary: #0d6efd;
+  --color-primary-hover: #0b5ed7;
+  --color-primary-contrast: #ffffff;
+
+  /* Secondary/Accent Colors */
+  --color-secondary: #6c757d;
+  --color-accent: #6610f2;
+
+  /* Buttons */
+  --button-bg: var(--color-primary);
+  --button-bg-hover: var(--color-primary-hover);
+  --button-text: var(--color-primary-contrast);
+
+  /* Links */
+  --link-color: #0d6efd;
+  --link-hover: #0a58ca;
+
+  /* Borders & Dividers */
+  --color-border: #dee2e6;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.dark {
+  --color-bg: #121212;
+  --color-surface: #1e1e1e;
+  --color-card: #2a2a2a;
+
+  --color-text: #f1f1f1;
+  --color-text-muted: #a0a0a0;
+  --color-heading: #ffffff;
+
+  --color-primary: #4dabf7;
+  --color-primary-hover: #339af0;
+  --color-primary-contrast: #000000;
+
+  --color-secondary: #adb5bd;
+  --color-accent: #be4bdb;
+
+  --button-bg: var(--color-primary);
+  --button-bg-hover: var(--color-primary-hover);
+  --button-text: var(--color-primary-contrast);
+
+  --link-color: #4dabf7;
+  --link-hover: #339af0;
+
+  --color-border: #343a40;
+
+  --shadow-sm: 0 1px 2px rgba(255, 255, 255, 0.05);
+  --shadow-md: 0 4px 6px rgba(255, 255, 255, 0.1);
+  --shadow-lg: 0 10px 20px rgba(255, 255, 255, 0.15);
+}
+
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Source Sans 3";
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: var(--clr-1);
+  min-height: 100vh;
 }
 
 code {

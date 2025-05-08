@@ -1,0 +1,90 @@
+/* Logbook Container */
+.logbook-container > h2{
+  color: var(--color-text);
+}
+/* Logbook Div */
+/* .logbook-div {
+  position: relative;
+  border-radius: 0.5rem;
+}
+.logbook-div:before,
+.logbook-div:after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: -0.5rem;
+  border-radius: inherit;
+  filter: blur(1rem);
+  background: conic-gradient(
+    from var(--bg-angle),
+    var(--clr-3),
+    var(--clr-4),
+    var(--clr-5),
+    var(--clr-4),
+    var(--clr-3)
+  );
+  animation: rotate-border 2s linear infinite;
+} */
+
+/* Buttons window */
+.control-group {
+  box-sizing: border-box;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-surface);
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+.button-group {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+}
+.button-group button {
+  font-family: "Source Sans 3";
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+  border: 1.5px solid transparent;
+  border-radius: 0.25rem;
+  transition: --gradient-button-fill 350ms, --gradient-button-border-1 350ms, --gradient-button-border-2 350ms;
+  animation: rotate-border 1.5s linear infinite;
+  animation-play-state: paused;
+  background: 
+    linear-gradient(var(--gradient-button-fill) 0 0) padding-box,
+    linear-gradient(var(--bg-angle), var(--gradient-button-border-1), var(--gradient-button-border-2)) border-box;
+ 
+  &:hover, &:focus-visible {
+    --gradient-button-fill: var(--color-gradient-button-fill);
+    --gradient-button-border-1: var(--color-gradient-button-border-1);
+    --gradient-button-border-2: var(--color-gradient-button-border-2);
+    animation-play-state: running;
+  }
+  &:active {
+    --gradient-button-fill: transparent;
+  }
+}
+
+/* Editor window */
+.tiptap {
+  box-sizing: border-box;
+  background: var(--color-surface);
+  text-align: left;
+  padding: 0.5rem 0.5rem;
+  border: 1px solid var(--color-border);
+  border-top: none;
+  border-radius: 0 0 0.5rem 0.5rem;
+  min-height: 50vh;
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+.tiptap{
+  :first-child {
+  margin-top: 0;
+  }
+}
+
