@@ -130,6 +130,7 @@ const MenuBar = () => {
             // content={editor.isActive('heading') ? `<${headingDropdownVar} />` : <Heading1 />}
             onClick={handleClickHeadingDropdown}
             style={{paddingRight: '0'}}
+            data-title='Heading'
           >
             {headingComponents[currentHeading] ||<Heading1 style={{opacity: '0.8'}}/>}<ChevronDown className='chevron-down'/>
           </button>
@@ -317,7 +318,7 @@ const Tiptap = () => {
     <div className='output-container'>
       <h3>Output</h3>
       {submittedForms.map((entryObject, index) => 
-        <div key={index} dangerouslySetInnerHTML={{__html: entryObject.currentForm}}></div>
+        <div className='submitted-form-div' key={index} dangerouslySetInnerHTML={{__html: entryObject.currentForm}}></div>
       )}
     </div>
     </div>

@@ -67,6 +67,7 @@
   color: var(--color-text);
   border: 1.5px solid transparent;
   border-radius: 0.25rem;
+  cursor: pointer;
   transition: --gradient-button-fill 350ms, --gradient-button-border-1 350ms, --gradient-button-border-2 350ms;
   animation: rotate-border 1.5s linear infinite;
   animation-play-state: paused;
@@ -89,7 +90,7 @@
   padding: 0;
   width: fit-content;
   left: 0%;
-  top: 110%;
+  bottom: 110%;
   right: -500%;
   font-size: 0.8rem;
   scale: 1;
@@ -182,6 +183,7 @@
   color: var(--color-text);
   border: 1.5px solid transparent;
   border-radius: 0.25rem;
+  cursor: pointer;
   transition: --gradient-button-fill 350ms, --gradient-button-border-1 350ms, --gradient-button-border-2 350ms;
   animation: rotate-border 1.5s linear infinite;
   animation-play-state: paused;
@@ -204,7 +206,7 @@
   flex-direction: column;
   box-sizing: border-box;
   margin-top: 1rem;
-  padding: 0.5rem 0.5rem;
+  padding: 0.5rem 2.5rem;
   border: 1px solid var(--color-border);
   background-color: var(--color-surface);
   border-radius: 0.5rem;
@@ -214,3 +216,12 @@
     margin-top: 0;
   }
 }
+.output-container .submitted-form-div {
+  margin-bottom: 0.5rem;
+  background: var(--color-bg);
+  border-radius: 0.5rem;  
+  transition: all 350ms;
+}
+.output-container .submitted-form-div:hover {
+  box-shadow: 0px 0px 5px 0px var(--color-text);
+} 
