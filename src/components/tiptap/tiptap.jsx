@@ -9,7 +9,9 @@ import Superscript from '@tiptap/extension-superscript'
 import Document from '@tiptap/extension-document'
 import Paragraph from '@tiptap/extension-paragraph'
 import StarterKit from '@tiptap/starter-kit';
-import { Bold, CodeXml, CornerDownLeft, Heading1, Heading2, Heading3, Heading4, Heading5, Heading6, Italic, List, ListOrdered, LucideSubscript, LucideSuperscript, LucideUnderline, Pilcrow, Redo2, SeparatorHorizontal, SquareCode, Strikethrough, TextQuote, Undo2 } from 'lucide-react';
+import { Bold, ChevronDown, CodeXml, CornerDownLeft, Heading1, Heading2, Heading3, Heading4, Heading5, Heading6, Italic, List, ListOrdered, LucideSubscript, LucideSuperscript, LucideUnderline, Pilcrow, Redo2, SeparatorHorizontal, SquareCode, Strikethrough, TextQuote, Undo2 } from 'lucide-react';
+import {useState} from 'react';
+import DOMPurify from 'dompurify';
 
 // define your extension array
 const extensions = [
@@ -32,9 +34,24 @@ const extensions = [
 
 const content = '<p>Hey! Write something..!</p>'
 
+function handleClickHeadingDropdown() {
+  const headingDropDownDiv = document.querySelector('.heading-dropdown-content');
+  headingDropDownDiv.classList.toggle('show-dropdown');
+}
+
 const MenuBar = () => {
   const { editor } = useCurrentEditor()
-
+  
+  const currentHeading = editor.isActive('heading', {level: 2}) ? 'Heading2' : editor.isActive('heading', {level: 3}) ? 'Heading3' : editor.isActive('heading', {level: 4}) ? 'Heading4' : editor.isActive('heading', {level: 5}) ? 'Heading5' : editor.isActive('heading', {level: 6}) ? 'Heading6' : 'Heading1';
+  
+  const headingComponents = {
+    Heading1: <Heading1 style={{opacity: '0.8'}}/>,
+    Heading2: <Heading2 style={{opacity: '0.8'}}/>,
+    Heading3: <Heading3 style={{opacity: '0.8'}}/>,
+    Heading4: <Heading4 style={{opacity: '0.8'}}/>,
+    Heading5: <Heading5 style={{opacity: '0.8'}}/>,
+    Heading6: <Heading6 style={{opacity: '0.8'}}/>,
+  };
   if (!editor) {
     return null
   }
@@ -42,6 +59,7 @@ const MenuBar = () => {
   return (
     <div className="control-group">
       <div className="button-group">
+        <div className='button-group-div1'>
         <button
           onClick={() => editor.chain().focus().toggleBold().run()}
           disabled={
@@ -98,20 +116,64 @@ const MenuBar = () => {
         >
           <Strikethrough />
         </button>
-        <button
-          onClick={() => editor.chain().focus().toggleCode().run()}
-          disabled={
-            !editor.can()
-              .chain()
-              .focus()
-              .toggleCode()
-              .run()
-          }
-          className={editor.isActive('code') ? 'is-active' : ''}
-          data-title='Code'
+           <button
+          onClick={() => editor.chain().focus().setParagraph().run()}
+          className={editor.isActive('paragraph') ? 'is-active' : ''}
+          data-title='Paragraph'
         >
-          <CodeXml />
+          <Pilcrow />
         </button>
+          <div className='heading-dropdown'
+        >
+          <button 
+            className='heading-dropdown-button'
+            // content={editor.isActive('heading') ? `<${headingDropdownVar} />` : <Heading1 />}
+            onClick={handleClickHeadingDropdown}
+            style={{paddingRight: '0'}}
+          >
+            {headingComponents[currentHeading] ||<Heading1 style={{opacity: '0.8'}}/>}<ChevronDown className='chevron-down'/>
+          </button>
+          <div className='heading-dropdown-content'>
+            <button
+              onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+              className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
+            >
+              <Heading1 />
+            </button>
+            <button
+              onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+              className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
+            >
+              <Heading2 />
+            </button>
+            <button
+              onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+              className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
+            >
+              <Heading3 />
+            </button>
+            <button
+              onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
+              className={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
+            >
+              <Heading4 />
+            </button>
+            <button
+              onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
+              className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
+            >
+              <Heading5 />
+            </button>
+            <button
+              onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
+              className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
+            >
+              <Heading6 />
+            </button>
+          </div>
+        </div>
+        </div>
+        <div className='button-group-div2'>
         <button
           onClick={() => editor.chain().focus().toggleSuperscript().run()}
           disabled={
@@ -141,47 +203,25 @@ const MenuBar = () => {
           <LucideSubscript />
         </button>
         <button
-          onClick={() => editor.chain().focus().setParagraph().run()}
-          className={editor.isActive('paragraph') ? 'is-active' : ''}
-          data-title='Paragraph'
+          onClick={() => editor.chain().focus().toggleCode().run()}
+          disabled={
+            !editor.can()
+              .chain()
+              .focus()
+              .toggleCode()
+              .run()
+          }
+          className={editor.isActive('code') ? 'is-active' : ''}
+          data-title='Code'
         >
-          <Pilcrow />
+          <CodeXml />
         </button>
         <button
-          onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
-          className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
+          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+          className={editor.isActive('codeBlock') ? 'is-active' : ''}
+          data-title='Code Block'
         >
-          <Heading1 />
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-          className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
-        >
-          <Heading2 />
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-          className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
-        >
-          <Heading3 />
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
-          className={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
-        >
-          <Heading4 />
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
-          className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
-        >
-          <Heading5 />
-        </button>
-        <button
-          onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
-          className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
-        >
-          <Heading6 />
+          <SquareCode />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleBulletList().run()}
@@ -198,13 +238,6 @@ const MenuBar = () => {
           <ListOrdered />
         </button>
         <button
-          onClick={() => editor.chain().focus().toggleCodeBlock().run()}
-          className={editor.isActive('codeBlock') ? 'is-active' : ''}
-          data-title='Code Block'
-        >
-          <SquareCode />
-        </button>
-        <button
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={editor.isActive('blockquote') ? 'is-active' : ''}
           data-title='Block Quote'
@@ -215,8 +248,12 @@ const MenuBar = () => {
           data-title='Horizontal Rule'>
           <SeparatorHorizontal />
         </button>
-        <button onClick={() => editor.chain().focus().setHardBreak().run()}
-          data-title='Hard Break'>
+        </div>
+        <div className='button-group-div3'>
+        <button 
+          onClick={() => editor.chain().focus().setHardBreak().run()}
+          data-title='Hard Break'
+        >
           <CornerDownLeft />
         </button>
         <button
@@ -245,13 +282,14 @@ const MenuBar = () => {
         >
           <Redo2 />
         </button>
-        <button
+        {/* <button
           onClick={() => editor.chain().focus().setColor('#958DF1').run()}
           className={editor.isActive('textStyle', { color: '#958DF1' }) ? 'is-active' : ''}
           style={{color: '#958DF1'}}
         >
           Purple
-        </button>
+        </button> */}
+        </div>
       </div>
     </div>
   )
@@ -260,11 +298,28 @@ const MenuBar = () => {
 
 
 const Tiptap = () => {
+  const [submittedForms, setSubmittedForms] = useState([]);
+  function handleSubmit() {
+    const currentFormElement = document.querySelector('.tiptap');
+    const currentForm = DOMPurify.sanitize(currentFormElement.innerHTML);
+    setSubmittedForms(prev => [
+      ...prev,
+      {currentForm}
+    ])
+  }
+  console.log(submittedForms);
   return (
     <div className='logbook-div'>
     <EditorProvider className='editor-container' slotBefore={<MenuBar />} extensions={extensions} content={content}>
       
     </EditorProvider>
+    <button className='submit-button' onClick={handleSubmit}>Submit</button>
+    <div className='output-container'>
+      <h3>Output</h3>
+      {submittedForms.map((entryObject, index) => 
+        <div key={index} dangerouslySetInnerHTML={{__html: entryObject.currentForm}}></div>
+      )}
+    </div>
     </div>
   )
 }
