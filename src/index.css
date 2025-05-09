@@ -23,6 +23,21 @@
     --bg-angle: 360deg;
   }
 }
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes color-shift {
+  from {
+    color: var(--color-accent);
+    filter: blur(3px);
+    transform: translate(-5px, 0px)
+  }
+}
 :root {
   /* Border gradient colors */
   --clr-1: #ffffff;
@@ -34,6 +49,7 @@
   /* Backgrounds */
   --color-bg: #ffffff;
   --color-surface: #f8f9fa;
+  --color-surface-transparent: #f8f9fa68;
   --color-card: #f1f3f5;
   --color-gradient: #dfe7ef, #afc2d5;
   --color-gradient-button-fill: #f1f3f5;

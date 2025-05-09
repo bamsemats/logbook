@@ -3,8 +3,13 @@ import { EditorProvider, FloatingMenu, BubbleMenu, useCurrentEditor } from '@tip
 import { Color } from '@tiptap/extension-color'
 import ListItem from '@tiptap/extension-list-item'
 import TextStyle from '@tiptap/extension-text-style'
+import Underline from '@tiptap/extension-underline'
+import Subscript from '@tiptap/extension-subscript'
+import Superscript from '@tiptap/extension-superscript'
+import Document from '@tiptap/extension-document'
+import Paragraph from '@tiptap/extension-paragraph'
 import StarterKit from '@tiptap/starter-kit';
-import {useEffect, useState} from 'react';
+import { Bold, CodeXml, CornerDownLeft, Heading1, Heading2, Heading3, Heading4, Heading5, Heading6, Italic, List, ListOrdered, LucideSubscript, LucideSuperscript, LucideUnderline, Pilcrow, Redo2, SeparatorHorizontal, SquareCode, Strikethrough, TextQuote, Undo2 } from 'lucide-react';
 
 // define your extension array
 const extensions = [
@@ -20,9 +25,12 @@ const extensions = [
       keepAttributes: false, // TODO : Making this as `false` becase marks are not preserved when I try to preserve attrs, awaiting a bit of help
     },
   }),
+  Underline,
+  Subscript,
+  Superscript
 ]
 
-const content = '<p>Hello World!</p>'
+const content = '<p>Hey! Write something..!</p>'
 
 const MenuBar = () => {
   const { editor } = useCurrentEditor()
@@ -44,8 +52,9 @@ const MenuBar = () => {
               .run()
           }
           className={editor.isActive('bold') ? 'is-active' : ''}
+          data-title='Bold'
         >
-          Bold
+          <Bold />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleItalic().run()}
@@ -57,8 +66,23 @@ const MenuBar = () => {
               .run()
           }
           className={editor.isActive('italic') ? 'is-active' : ''}
+          data-title='Italic'
         >
-          Italic
+          <Italic />
+        </button>
+        <button
+          onClick={() => editor.chain().focus().toggleUnderline().run()}
+          disabled={
+            !editor.can()
+              .chain()
+              .focus()
+              .toggleUnderline()
+              .run()
+          }
+          className={editor.isActive('underline') ? 'is-active' : ''}
+          data-title='Underline'
+        >
+          <LucideUnderline />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleStrike().run()}
@@ -70,8 +94,9 @@ const MenuBar = () => {
               .run()
           }
           className={editor.isActive('strike') ? 'is-active' : ''}
+          data-title='Strike'
         >
-          Strike
+          <Strikethrough />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleCode().run()}
@@ -83,86 +108,116 @@ const MenuBar = () => {
               .run()
           }
           className={editor.isActive('code') ? 'is-active' : ''}
+          data-title='Code'
         >
-          Code
+          <CodeXml />
         </button>
-        <button onClick={() => editor.chain().focus().unsetAllMarks().run()}>
-          Clear marks
+        <button
+          onClick={() => editor.chain().focus().toggleSuperscript().run()}
+          disabled={
+            !editor.can()
+              .chain()
+              .focus()
+              .toggleSuperscript()
+              .run()
+          }
+          className={editor.isActive('superscript') ? 'is-active' : ''}
+          data-title='Superscript'
+        >
+          <LucideSuperscript />
         </button>
-        <button onClick={() => editor.chain().focus().clearNodes().run()}>
-          Clear nodes
+        <button
+          onClick={() => editor.chain().focus().toggleSubscript().run()}
+          disabled={
+            !editor.can()
+              .chain()
+              .focus()
+              .toggleSubscript()
+              .run()
+          }
+          className={editor.isActive('subscript') ? 'is-active' : ''}
+          data-title='Subscript'
+        >
+          <LucideSubscript />
         </button>
         <button
           onClick={() => editor.chain().focus().setParagraph().run()}
           className={editor.isActive('paragraph') ? 'is-active' : ''}
+          data-title='Paragraph'
         >
-          Paragraph
+          <Pilcrow />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
           className={editor.isActive('heading', { level: 1 }) ? 'is-active' : ''}
         >
-          H1
+          <Heading1 />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
           className={editor.isActive('heading', { level: 2 }) ? 'is-active' : ''}
         >
-          H2
+          <Heading2 />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
           className={editor.isActive('heading', { level: 3 }) ? 'is-active' : ''}
         >
-          H3
+          <Heading3 />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 4 }).run()}
           className={editor.isActive('heading', { level: 4 }) ? 'is-active' : ''}
         >
-          H4
+          <Heading4 />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 5 }).run()}
           className={editor.isActive('heading', { level: 5 }) ? 'is-active' : ''}
         >
-          H5
+          <Heading5 />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleHeading({ level: 6 }).run()}
           className={editor.isActive('heading', { level: 6 }) ? 'is-active' : ''}
         >
-          H6
+          <Heading6 />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleBulletList().run()}
           className={editor.isActive('bulletList') ? 'is-active' : ''}
+          data-title='Bullet List'
         >
-          Bullet list
+          <List />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleOrderedList().run()}
           className={editor.isActive('orderedList') ? 'is-active' : ''}
+          data-title='Numbered List'
         >
-          Ordered list
+          <ListOrdered />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleCodeBlock().run()}
           className={editor.isActive('codeBlock') ? 'is-active' : ''}
+          data-title='Code Block'
         >
-          Code block
+          <SquareCode />
         </button>
         <button
           onClick={() => editor.chain().focus().toggleBlockquote().run()}
           className={editor.isActive('blockquote') ? 'is-active' : ''}
+          data-title='Block Quote'
         >
-          Blockquote
+          <TextQuote />
         </button>
-        <button onClick={() => editor.chain().focus().setHorizontalRule().run()}>
-          Horizontal rule
+        <button onClick={() => editor.chain().focus().setHorizontalRule().run()}
+          data-title='Horizontal Rule'>
+          <SeparatorHorizontal />
         </button>
-        <button onClick={() => editor.chain().focus().setHardBreak().run()}>
-          Hard break
+        <button onClick={() => editor.chain().focus().setHardBreak().run()}
+          data-title='Hard Break'>
+          <CornerDownLeft />
         </button>
         <button
           onClick={() => editor.chain().focus().undo().run()}
@@ -173,8 +228,9 @@ const MenuBar = () => {
               .undo()
               .run()
           }
+          data-title='Undo'
         >
-          Undo
+          <Undo2 />
         </button>
         <button
           onClick={() => editor.chain().focus().redo().run()}
@@ -185,12 +241,14 @@ const MenuBar = () => {
               .redo()
               .run()
           }
+          data-title='Redo'
         >
-          Redo
+          <Redo2 />
         </button>
         <button
           onClick={() => editor.chain().focus().setColor('#958DF1').run()}
           className={editor.isActive('textStyle', { color: '#958DF1' }) ? 'is-active' : ''}
+          style={{color: '#958DF1'}}
         >
           Purple
         </button>

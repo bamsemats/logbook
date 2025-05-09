@@ -43,8 +43,12 @@
   gap: 0.25rem;
 }
 .button-group button {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
   font-family: "Source Sans 3";
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--color-text);
   border: 1.5px solid transparent;
@@ -65,8 +69,25 @@
   &:active {
     --gradient-button-fill: transparent;
   }
+}.button-group button[data-title]:hover:after {
+  content: attr(data-title);
+  position: absolute;
+  padding: 0;
+  width: fit-content;
+  left: 0%;
+  top: 110%;
+  right: -500%;
+  font-size: 0.8rem;
+  scale: 1;
+  color: var(--color-text);
+  background: transparent;
+  border-radius: 0.25rem;
+  animation: fade-in 450ms ease-in, color-shift 450ms ease-in;
+  z-index: 1;
 }
-
+.button-group > .is-active {
+  color: var(--color-accent)
+}
 /* Editor window */
 .tiptap {
   box-sizing: border-box;
