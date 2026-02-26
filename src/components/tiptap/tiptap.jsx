@@ -32,7 +32,7 @@ const extensions = [
   Superscript
 ]
 
-const content = '<p>Hey! Write something..!</p>'
+const content = `<p><b>Welcome!</b><br> Write your message here</p>`
 
 function handleClickHeadingDropdown() {
   const headingDropDownDiv = document.querySelector('.heading-dropdown-content');
