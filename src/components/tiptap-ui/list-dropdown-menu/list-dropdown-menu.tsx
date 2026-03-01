@@ -2,14 +2,14 @@ import * as React from "react"
 import { isNodeSelection, type Editor } from "@tiptap/react"
 
 // --- Hooks ---
-import { useTiptapEditor } from "@/hooks/use-tiptap-editor"
+import { useTiptapEditor } from "../../../hooks/use-tiptap-editor"
 
 // --- Icons ---
-import { ChevronDownIcon } from "@/components/tiptap-icons/chevron-down-icon"
-import { ListIcon } from "@/components/tiptap-icons/list-icon"
+import { ChevronDownIcon } from "../../../components/tiptap-icons/chevron-down-icon"
+import { ListIcon } from "../../../components/tiptap-icons/list-icon"
 
 // --- Lib ---
-import { isNodeInSchema } from "@/lib/tiptap-utils"
+import { isNodeInSchema } from "../../../lib/tiptap-utils"
 
 // --- Tiptap UI ---
 import {
@@ -18,18 +18,18 @@ import {
   isListActive,
   listOptions,
   type ListType,
-} from "@/components/tiptap-ui/list-button/list-button"
+} from "../../tiptap-ui/list-button/list-button"
 
 // --- UI Primitives ---
-import type { ButtonProps } from "@/components/tiptap-ui-primitive/button"
-import { Button } from "@/components/tiptap-ui-primitive/button"
+import type { ButtonProps } from "../../../components/tiptap-ui-primitive/button"
+import { Button } from "../../../components/tiptap-ui-primitive/button"
 import {
   DropdownMenu,
   DropdownMenuTrigger,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
-} from "@/components/tiptap-ui-primitive/dropdown-menu"
+} from "../../tiptap-ui-primitive/dropdown-menu"
 
 export interface ListDropdownMenuProps extends Omit<ButtonProps, "type"> {
   /**

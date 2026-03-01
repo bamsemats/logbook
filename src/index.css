@@ -33,102 +33,158 @@
 }
 @keyframes color-shift {
   from {
-    color: var(--color-accent);
-    filter: blur(3px);
-    transform: translate(-5px, 0px)
+    color: var(--color-primary);
+    filter: blur(2px);
+    transform: translate(-3px, 0px)
   }
 }
+
 :root {
-  /* Border gradient colors */
+  /* Paper & Ink Palette */
   --clr-1: #ffffff;
-  --clr-2: #f8f9fa;
-  --clr-3: #f1f3f5;
-  --clr-4: #eaf3f3;
-  --clr-5: #dcebe4;
+  --clr-2: #fafaf9; /* Warm Paper */
+  --clr-3: #f5f5f4;
+  --clr-4: #e7e5e4;
+  --clr-5: #d6d3d1;
 
   /* Backgrounds */
-  --color-bg: #ffffff;
-  --color-surface: #f8f9fa;
-  --color-surface-transparent: #f8f9fa68;
-  --color-card: #f1f3f5;
-  --color-gradient: #dfe7ef, #afc2d5;
-  --color-gradient-button-fill: #f1f3f5;
-  --color-gradient-button-border-1: #dfe7ef;
-  --color-gradient-button-border-2: #afc2d5;
+  --color-bg: #f5f5f4; /* Warm Stone Paper */
+  --color-surface: #fafaf9;
+  --color-surface-transparent: rgba(250, 250, 249, 0.8);
+  --color-card: #ffffff;
+  
+  /* Primary / Ink - Professional Navy */
+  --color-primary: #1e293b; 
+  --color-primary-hover: #0f172a;
+  --color-primary-contrast: #ffffff;
+  
+  /* Accent - Fountain Pen Blue */
+  --color-accent: #2563eb;
+  
+  /* Gradients */
+  --color-gradient-button-fill: #ffffff;
+  --color-gradient-button-border-1: #44403c;
+  --color-gradient-button-border-2: #1e293b;
 
   /* Text */
-  --color-text: #212529;
-  --color-text-muted: #6c757d;
-  --color-heading: #111;
-
-  /* Primary Colors */
-  --color-primary: #0d6efd;
-  --color-primary-hover: #0b5ed7;
-  --color-primary-contrast: #ffffff;
-
-  /* Secondary/Accent Colors */
-  --color-secondary: #6c757d;
-  --color-accent: #6610f2;
-
-  /* Buttons */
-  --button-bg: var(--color-primary);
-  --button-bg-hover: var(--color-primary-hover);
-  --button-text: var(--color-primary-contrast);
-
-  /* Links */
-  --link-color: #0d6efd;
-  --link-hover: #0a58ca;
+  --color-text: #1c1917; /* Charcoal Ink */
+  --color-text-muted: #57534e;
+  --color-heading: #0c0a09;
 
   /* Borders & Dividers */
-  --color-border: #dee2e6;
+  --color-border: #d6d3d1;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.15);
+  /* Shadows - More subtle, "Flat" look */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+
+  /* Status */
+  --color-error: #991b1b;
+  --color-success: #166534;
+
+  /****************** 
+  Tiptap UI Variables
+  ******************/
+  
+  /* Gray alpha (light mode) */
+  --tt-gray-light-a-50: rgba(68, 64, 60, 0.04);
+  --tt-gray-light-a-100: rgba(68, 64, 60, 0.08);
+  --tt-gray-light-a-200: rgba(68, 64, 60, 0.12);
+  --tt-gray-light-a-300: rgba(68, 64, 60, 0.2);
+  --tt-gray-light-a-400: rgba(68, 64, 60, 0.4);
+  --tt-gray-light-a-500: rgba(68, 64, 60, 0.6);
+  --tt-gray-light-a-600: rgba(68, 64, 60, 0.75);
+  --tt-gray-light-a-700: rgba(68, 64, 60, 0.85);
+  --tt-gray-light-a-800: rgba(68, 64, 60, 0.92);
+  --tt-gray-light-a-900: rgba(28, 25, 23, 0.98);
+
+  /* Gray (light mode) */
+  --tt-gray-light-50: #fafaf9;
+  --tt-gray-light-100: #f5f5f4;
+  --tt-gray-light-200: #e7e5e4;
+  --tt-gray-light-300: #d6d3d1;
+  --tt-gray-light-400: #a8a29e;
+  --tt-gray-light-500: #78716c;
+  --tt-gray-light-600: #57534e;
+  --tt-gray-light-700: #44403c;
+  --tt-gray-light-800: #292524;
+  --tt-gray-light-900: #1c1917;
+
+  /* Brand colors (Mapped to Navy Ink) */
+  --tt-brand-color-50: #f0f7ff;
+  --tt-brand-color-100: #e0effe;
+  --tt-brand-color-200: #bae0fd;
+  --tt-brand-color-300: #7cc6fb;
+  --tt-brand-color-400: #38a9f8;
+  --tt-brand-color-500: #0ea5e9;
+  --tt-brand-color-600: #0284c7;
+  --tt-brand-color-700: #0369a1;
+  --tt-brand-color-800: #075985;
+  --tt-brand-color-900: #0c4a6e;
+
+  --white: #ffffff;
+  --black: #0c0a09;
+  --transparent: transparent;
+
+  --tt-bg-color: var(--white);
+  --tt-border-color: var(--tt-gray-light-a-200);
+  --tt-cursor-color: var(--color-accent);
+  --tt-selection-color: rgba(37, 99, 235, 0.15);
 }
 
 .dark {
-  --color-bg: #121212;
-  --color-surface: #1e1e1e;
-  --color-card: #2a2a2a;
+  --color-bg: #1c1917; /* Deep Charcoal */
+  --color-surface: #292524;
+  --color-card: #292524;
 
-  --color-text: #f1f1f1;
-  --color-text-muted: #a0a0a0;
-  --color-heading: #ffffff;
+  --color-text: #e7e5e4;
+  --color-text-muted: #a8a29e;
+  --color-heading: #fafaf9;
 
-  --color-primary: #4dabf7;
-  --color-primary-hover: #339af0;
-  --color-primary-contrast: #000000;
+  --color-primary: #e7e5e4;
+  --color-primary-hover: #ffffff;
+  --color-primary-contrast: #1c1917;
 
-  --color-secondary: #adb5bd;
-  --color-accent: #be4bdb;
+  --color-accent: #60a5fa;
 
-  --button-bg: var(--color-primary);
-  --button-bg-hover: var(--color-primary-hover);
-  --button-text: var(--color-primary-contrast);
+  --color-border: #44403c;
+  
+  --color-gradient-button-fill: #292524;
+  --color-gradient-button-border-1: #78716c;
+  --color-gradient-button-border-2: #a8a29e;
 
-  --link-color: #4dabf7;
-  --link-hover: #339af0;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 10px 20px rgba(0, 0, 0, 0.7);
 
-  --color-border: #343a40;
+  /* Tiptap Dark Variables */
+  --tt-gray-dark-a-50: rgba(231, 229, 228, 0.05);
+  --tt-gray-dark-a-100: rgba(231, 229, 228, 0.08);
+  --tt-gray-dark-a-200: rgba(231, 229, 228, 0.12);
+  --tt-gray-dark-a-300: rgba(231, 229, 228, 0.2);
+  --tt-gray-dark-a-400: rgba(231, 229, 228, 0.4);
+  --tt-gray-dark-a-500: rgba(231, 229, 228, 0.6);
+  --tt-gray-dark-a-600: rgba(231, 229, 228, 0.75);
+  --tt-gray-dark-a-700: rgba(231, 229, 228, 0.85);
+  --tt-gray-dark-a-800: rgba(231, 229, 228, 0.92);
+  --tt-gray-dark-a-900: rgba(250, 250, 249, 0.98);
 
-  --shadow-sm: 0 1px 2px rgba(255, 255, 255, 0.05);
-  --shadow-md: 0 4px 6px rgba(255, 255, 255, 0.1);
-  --shadow-lg: 0 10px 20px rgba(255, 255, 255, 0.15);
+  --tt-bg-color: #1c1917;
+  --tt-border-color: var(--tt-gray-dark-a-200);
+  --tt-cursor-color: #60a5fa;
 }
-
 
 body {
   margin: 0;
-  font-family: "Source Sans 3";
+  font-family: "Source Sans 3", system-ui, -apple-system, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--clr-1);
+  background-color: var(--color-bg);
+  color: var(--color-text);
   min-height: 100vh;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }

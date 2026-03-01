@@ -18,8 +18,8 @@ import {
   useRole,
   useTypeahead,
 } from "@floating-ui/react"
-import "@/components/tiptap-ui-primitive/dropdown-menu/dropdown-menu.scss"
-import { Separator } from "@/components/tiptap-ui-primitive/separator"
+import "./dropdown-menu.scss"
+import { Separator } from "../separator/separator"
 
 interface DropdownMenuOptions {
   initialOpen?: boolean
@@ -383,4 +383,4 @@ export const DropdownMenuSeparator = React.forwardRef<
     {...props}
   />
 ))
-DropdownMenuSeparator.displayName = Separator.displayName
+DropdownMenuSeparator.displayName = "DropdownMenuSeparator"

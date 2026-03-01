@@ -3,21 +3,21 @@ import { isNodeSelection, type Editor } from "@tiptap/react"
 import type { Node } from "@tiptap/pm/model"
 
 // --- Hooks ---
-import { useTiptapEditor } from "@/hooks/use-tiptap-editor"
+import { useTiptapEditor } from "../../../hooks/use-tiptap-editor"
 
 // --- Lib ---
 import {
   findNodePosition,
   isEmptyNode,
   isMarkInSchema,
-} from "@/lib/tiptap-utils"
+} from "../../../lib/tiptap-utils"
 
 // --- UI Primitives ---
-import type { ButtonProps } from "@/components/tiptap-ui-primitive/button"
-import { Button } from "@/components/tiptap-ui-primitive/button"
+import type { ButtonProps } from "../../../components/tiptap-ui-primitive/button"
+import { Button } from "../../../components/tiptap-ui-primitive/button"
 
 // --- Styles ---
-import "@/components/tiptap-ui/highlight-button/highlight-button.scss"
+import "../../../components/tiptap-ui/highlight-button/highlight-button.scss"
 
 export const HIGHLIGHT_COLORS = [
   {

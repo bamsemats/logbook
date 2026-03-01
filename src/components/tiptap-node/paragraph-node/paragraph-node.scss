@@ -28,6 +28,8 @@
   white-space: pre-wrap;
   outline: none;
   caret-color: var(--tt-cursor-color);
+  padding: 1rem;
+  box-shadow: inset 0 0 4px var(--color-bg);
 
   // Paragraph spacing
   p:not(:first-child) {

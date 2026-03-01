@@ -1,6 +1,5 @@
-import Tiptap from '../tiptap/tiptap';
+import Tiptap from '../../components/tiptap/tiptap';
 import './logbook.css';
-import {useState, useEffect} from 'react';
 
 export default function Logbook() {
   return (

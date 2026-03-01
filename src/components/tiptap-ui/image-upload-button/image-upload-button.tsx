@@ -2,14 +2,14 @@ import * as React from "react"
 import { type Editor } from "@tiptap/react"
 
 // --- Hooks ---
-import { useTiptapEditor } from "@/hooks/use-tiptap-editor"
+import { useTiptapEditor } from "../../../hooks/use-tiptap-editor"
 
 // --- Icons ---
-import { ImagePlusIcon } from "@/components/tiptap-icons/image-plus-icon"
+import { ImagePlusIcon } from "../../../components/tiptap-icons/image-plus-icon"
 
 // --- UI Primitives ---
-import type { ButtonProps } from "@/components/tiptap-ui-primitive/button"
-import { Button } from "@/components/tiptap-ui-primitive/button"
+import type { ButtonProps } from "../../../components/tiptap-ui-primitive/button"
+import { Button } from "../../../components/tiptap-ui-primitive/button"
 
 export interface ImageUploadButtonProps extends ButtonProps {
   editor?: Editor | null

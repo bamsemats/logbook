@@ -2,226 +2,205 @@
 .logbook-container > h2{
   color: var(--color-text);
 }
-/* Logbook Div */
-/* .logbook-div {
-  position: relative;
-  border-radius: 0.5rem;
-}
-.logbook-div:before,
-.logbook-div:after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  inset: -0.5rem;
-  border-radius: inherit;
-  filter: blur(1rem);
-  background: conic-gradient(
-    from var(--bg-angle),
-    var(--clr-3),
-    var(--clr-4),
-    var(--clr-5),
-    var(--clr-4),
-    var(--clr-3)
-  );
-  animation: rotate-border 2s linear infinite;
-} */
 
-/* Buttons window */
-.control-group {
-  box-sizing: border-box;
-  padding: 0.5rem 0.5rem;
-  border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
-  border-radius: 0.5rem 0.5rem 0 0;
-}
-.button-group {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.25rem;
-}
-.button-group-div1,
-.button-group-div2,
-.button-group-div3 {
-  display: flex;
-  flex-direction: row;
-  gap: 0.25rem;
-}
-/* .button-group-div2 {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-} */
-.button-group button {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  font-family: "Source Sans 3";
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--color-text);
-  border: 1.5px solid transparent;
-  border-radius: 0.25rem;
-  cursor: pointer;
-  transition: --gradient-button-fill 350ms, --gradient-button-border-1 350ms, --gradient-button-border-2 350ms;
-  animation: rotate-border 1.5s linear infinite;
-  animation-play-state: paused;
-  background: 
-    linear-gradient(var(--gradient-button-fill) 0 0) padding-box,
-    linear-gradient(var(--bg-angle), var(--gradient-button-border-1), var(--gradient-button-border-2)) border-box;
- 
-  &:hover, &:focus-visible {
-    --gradient-button-fill: var(--color-gradient-button-fill);
-    --gradient-button-border-1: var(--color-gradient-button-border-1);
-    --gradient-button-border-2: var(--color-gradient-button-border-2);
-    animation-play-state: running;
-  }
-  &:active {
-    --gradient-button-fill: transparent;
-  }
-}.button-group button[data-title]:hover:after {
-  content: attr(data-title);
-  position: absolute;
-  padding: 0;
-  width: fit-content;
-  left: 0%;
-  bottom: 110%;
-  right: -500%;
-  font-size: 0.8rem;
-  scale: 1;
-  color: var(--color-text);
-  background: transparent;
-  border-radius: 0.25rem;
-  animation: fade-in 450ms ease-in, color-shift 450ms ease-in;
-  z-index: 1;
-}
-.button-group > .is-active {
-  color: var(--color-accent)
-}
-.button-group .heading-dropdown {
-  position: relative;
-}
-.button-group .heading-dropdown-content {
-  isolation: isolate;
-  position: absolute;
-  box-sizing: border-box;
-  top: 100%;
-  left: 0;
-  z-index: 1;
-  opacity: 0;
-  overflow: hidden;
-  height: 0;
-  max-height: fit-content;
-  transition: all 350ms;
-  background: transparent;
-  border-radius: 0 0 0.25rem 0.25rem;
-  filter: blur(1px);
-  transform: translate(0, -8px);
-  /* border: 1px solid red; */
-}
-.button-group .heading-dropdown-content:before,
-.button-group .heading-dropdown-content:after {
-  content: '';
-  position: absolute;
-  inset: -0.5px;
-  background: var(--color-card);
-  mask-image: linear-gradient(0deg, black 50%, transparent 95%);
-  z-index: -1;
-}
-.button-group .show-dropdown {
-  display: block;
-  opacity: 1;
-  height: 600%;
-  max-height: fit-content;
-  filter: blur(0);
-  transform: translate(0, 0);
-}
-.button-group .chevron-down {
-  opacity: 0.5;
-  scale: 0.6;
-  transition: all 450ms;
-}
-.button-group .heading-dropdown:hover .chevron-down {
-  scale: 0.65;
-  opacity: 1;
-}
 /* Editor window */
 .tiptap {
   box-sizing: border-box;
   background: var(--color-surface);
   text-align: left;
-  padding: 0.5rem 0.5rem;
+  padding: 1.5rem;
   border: 1px solid var(--color-border);
   border-top: none;
   border-radius: 0 0 0.5rem 0.5rem;
   min-height: 50vh;
+  color: var(--color-text);
+  line-height: 1.6;
 
   &:focus-visible {
     outline: none;
   }
 }
-.tiptap{
-  :first-child {
+
+.tiptap :first-child {
   margin-top: 0;
-  }
 }
+
+/* Custom styles for Tiptap nodes */
+.tiptap p {
+  margin-bottom: 1rem;
+}
+
 .submit-button {
   position: relative;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 2rem;
   justify-self: center;
   display: flex;
   flex-direction: row;
   align-items: center;
   font-family: "Source Sans 3";
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: var(--color-text);
+  color: var(--color-primary);
   border: 1.5px solid transparent;
-  border-radius: 0.25rem;
+  border-radius: 0.375rem;
   cursor: pointer;
-  transition: --gradient-button-fill 350ms, --gradient-button-border-1 350ms, --gradient-button-border-2 350ms;
-  animation: rotate-border 1.5s linear infinite;
+  transition: all 350ms;
+  animation: rotate-border 2s linear infinite;
   animation-play-state: paused;
   background: 
-    linear-gradient(var(--gradient-button-fill) 0 0) padding-box,
-    linear-gradient(var(--bg-angle), var(--gradient-button-border-1), var(--gradient-button-border-2)) border-box;
+    linear-gradient(var(--color-surface) 0 0) padding-box,
+    linear-gradient(var(--bg-angle), var(--color-gradient-button-border-1), var(--color-gradient-button-border-2)) border-box;
  
   &:hover, &:focus-visible {
-    --gradient-button-fill: var(--color-gradient-button-fill);
-    --gradient-button-border-1: var(--color-gradient-button-border-1);
-    --gradient-button-border-2: var(--color-gradient-button-border-2);
     animation-play-state: running;
+    color: var(--color-primary-hover);
+    box-shadow: var(--shadow-md);
   }
+  
   &:active {
-    --gradient-button-fill: transparent;
+    transform: translateY(1px);
+  }
+
+  &.cancel {
+    background: var(--color-bg);
+    border-color: var(--color-border);
+    color: var(--color-text-muted);
+    animation: none;
+    margin-left: 1rem;
+  }
+  
+  &.cancel:hover {
+    background: var(--color-border);
+    color: var(--color-text);
   }
 }
+
+.editor-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .output-container {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  margin-top: 1rem;
-  padding: 0.5rem 2.5rem;
+  margin-top: 4rem;
+  padding: 0 2rem 2rem 2rem;
   border: 1px solid var(--color-border);
   background-color: var(--color-surface);
   border-radius: 0.5rem;
+  box-shadow: var(--shadow-sm);
 }
-.output-container {
-  :first-child {
-    margin-top: 0;
-  }
+
+.output-container h3 {
+  margin-bottom: 2rem;
+  color: var(--color-heading);
+  border-bottom: 2px solid var(--color-border);
+  width: 100%;
+  padding-bottom: 0.5rem;
+  font-size: 1.5rem;
 }
+
 .output-container .submitted-form-div {
-  margin-bottom: 0.5rem;
+  position: relative;
+  margin-bottom: 2rem;
+  padding: 2rem;
   background: var(--color-bg);
   border-radius: 0.5rem;  
   transition: all 350ms;
+  border: 1px solid var(--color-border);
+  color: var(--color-text);
 }
+
 .output-container .submitted-form-div:hover {
-  box-shadow: 0px 0px 5px 0px var(--color-text);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary);
 } 
+
+.entry-actions {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: opacity 200ms;
+}
+
+.submitted-form-div:hover .entry-actions {
+  opacity: 1;
+}
+
+.action-btn {
+  padding: 0.5rem;
+  border-radius: 0.375rem;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 200ms;
+  color: var(--color-text-muted);
+}
+
+.action-btn:hover {
+  color: var(--color-accent);
+  border-color: var(--color-accent);
+  background: var(--color-surface);
+}
+
+.action-btn.delete:hover {
+  color: var(--color-error);
+  border-color: var(--color-error);
+}
+
+.edit-mode-indicator {
+  background: var(--color-accent);
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+  margin-left: 1.5rem;
+  font-weight: 500;
+  vertical-align: middle;
+}
+
+@media (max-width: 768px) {
+  .logbook-div {
+    padding: 0.5rem;
+  }
+  
+  .output-container {
+    margin-top: 2rem;
+    padding: 1rem;
+  }
+  
+  .output-container .submitted-form-div {
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .entry-actions {
+    opacity: 1;
+    top: 0.5rem;
+    right: 0.5rem;
+  }
+
+  .tiptap {
+    min-height: 40vh;
+    padding: 1rem;
+  }
+
+  .editor-controls {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .submit-button {
+    width: auto;
+    margin-left: 0 !important;
+  }
+}

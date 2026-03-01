@@ -2,18 +2,18 @@ import * as React from "react"
 import { isNodeSelection, type Editor } from "@tiptap/react"
 
 // --- Hooks ---
-import { useTiptapEditor } from "@/hooks/use-tiptap-editor"
+import { useTiptapEditor } from "../../../hooks/use-tiptap-editor"
 
 // --- Icons ---
-import { BlockQuoteIcon } from "@/components/tiptap-icons/block-quote-icon"
-import { CodeBlockIcon } from "@/components/tiptap-icons/code-block-icon"
+import { BlockQuoteIcon } from "../../../components/tiptap-icons/block-quote-icon"
+import { CodeBlockIcon } from "../../../components/tiptap-icons/code-block-icon"
 
 // --- Lib ---
-import { isNodeInSchema } from "@/lib/tiptap-utils"
+import { isNodeInSchema } from "../../../lib/tiptap-utils"
 
 // --- UI Primitives ---
-import type { ButtonProps } from "@/components/tiptap-ui-primitive/button"
-import { Button } from "@/components/tiptap-ui-primitive/button"
+import type { ButtonProps } from "../../../components/tiptap-ui-primitive/button"
+import { Button } from "../../../components/tiptap-ui-primitive/button"
 
 export type NodeType = "codeBlock" | "blockquote"
 
